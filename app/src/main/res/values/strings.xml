@@ -1,0 +1,43 @@
+<resources>
+    <string name="app_name">Samodelkin</string>
+
+    <!-- menus -->
+    <string name="menu_back_desc">Back</string>
+    <string name="menu_add_character_desc">Add New Character</string>
+    <string name="menu_delete_character_desc">Delete Character</string>
+
+    <!-- list item -->
+    <string name="label_name">Name:</string>
+    <string name="label_race">Race:</string>
+    <string name="label_profession">Profession:</string>
+    <string name="label_dex_short">D:</string>
+    <string name="label_wis_short">W:</string>
+    <string name="label_str_short">S:</string>
+    <string name="label_int_short">I:</string>
+    <string name="label_cha_short">Ch:</string>
+    <string name="label_con_short">Co:</string>
+
+    <!-- detail -->
+    <string name="name_label">Name</string>
+    <string name="race_label">Race</string>
+    <string name="profession_label">Profession</string>
+    <string name="stats_label">Stats</string>
+    <string name="dexterity_label">Dexterity</string>
+    <string name="strength_label">Strength</string>
+    <string name="wisdom_label">Wisdom</string>
+    <string name="intelligence_label">Intelligence</string>
+    <string name="constitution_label">Constitution</string>
+    <string name="charisma_label">Charisma</string>
+    <string name="dialog_positive_label">OK</string>
+    <string name="dialog_negative_label">Cancel</string>
+    <string name="dialog_title">Confirm Delete</string>
+    <string name="dialog_message">Are you sure you wish to delete this character? %1$s</string>
+    <string name="snackbar_character_deleted_msg">%1$s deleted!</string>
+
+    <!-- new character -->
+    <string name="generate_new_random_label">Generate Random Character</string>
+    <string name="api_label">Request Character From Web</string>
+    <string name="cancel_api_label">Cancel Request</string>
+    <string name="save_to_codex_label">Save Character To Codex</string>
+    <string name="snackbar_character_saved_msg">%1$s saved!</string>
+</resources>
