@@ -14,6 +14,7 @@ import edu.mines.csci448.examples.samodelkin.presentation.detail.SamodelkinDetai
 import edu.mines.csci448.examples.samodelkin.presentation.newcharacter.NewCharacterScreen
 import edu.mines.csci448.examples.samodelkin.presentation.viewmodel.ISamodelkinViewModel
 import edu.mines.csci448.examples.samodelkin.util.CharacterGenerator
+import edu.mines.csci448.examples.samodelkin.util.NetworkConnectionUtil
 import java.util.*
 
 object NewCharacterScreenSpec : IScreenSpec {
@@ -37,11 +38,13 @@ object NewCharacterScreenSpec : IScreenSpec {
 
             NewCharacterScreen(
                 character = characterState.value,
+                apiButtonIsEnabled = NetworkConnectionUtil.isNetworkAvailableAndConnected(context),
                 onGenerateRandomCharacter = { characterState.value = CharacterGenerator.generateRandomCharacter(context) },
                 onSaveCharacter = {
                     samodelkinViewModel.addCharacter(characterState.value)
                     navController.navigate(route = ListScreenSpec.buildRoute(ListScreenSpec.route))
-                }
+                },
+                onRequestApiCharacter = { /* TODO in Step 3 */ }
             )
     }
 

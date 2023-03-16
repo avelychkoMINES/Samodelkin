@@ -17,10 +17,9 @@ class SamodelkinViewModelFactory(private val context: Context) : ViewModelProvid
         Log.d(LOG_TAG, "create() called")
         if(modelClass.isAssignableFrom(getViewModelClass())) {
             Log.d(LOG_TAG, "creating ViewModel: ${getViewModelClass()}")
-            return SamodelkinViewModel(SamodelkinRepo.getInstance(context)) as T
-//            return modelClass
-//                .getConstructor(SamodelkinRepo::class.java)
-//                .newInstance(SamodelkinRepo.getInstance(context))
+            return modelClass
+                .getConstructor(SamodelkinRepo::class.java)
+                .newInstance(SamodelkinRepo.getInstance(context))
         }
         Log.e(LOG_TAG, "Unknown ViewModel: $modelClass")
         throw IllegalArgumentException("Unknown ViewModel")

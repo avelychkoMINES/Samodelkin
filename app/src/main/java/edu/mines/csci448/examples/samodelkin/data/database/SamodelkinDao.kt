@@ -11,11 +11,11 @@ import java.util.*
 @Dao
 interface SamodelkinDao {
     @Insert
-    fun addCharacter(character: SamodelkinCharacter)
+    suspend fun addCharacter(character: SamodelkinCharacter)
     @Query("SELECT * FROM character")
     fun getCharacters(): Flow<List<SamodelkinCharacter>>
     @Query("SELECT * FROM character WHERE id=(:id)")
-    fun getCharacterById(id: UUID): SamodelkinCharacter?
+    suspend fun getCharacterById(id: UUID): SamodelkinCharacter?
     @Delete
-    fun deleteCharacter(character: SamodelkinCharacter)
+    suspend fun deleteCharacter(character: SamodelkinCharacter)
 }

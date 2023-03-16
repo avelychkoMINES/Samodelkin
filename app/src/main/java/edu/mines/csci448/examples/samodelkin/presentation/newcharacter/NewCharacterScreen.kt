@@ -18,9 +18,10 @@ import edu.mines.csci448.examples.samodelkin.presentation.detail.SamodelkinChara
 import edu.mines.csci448.examples.samodelkin.util.CharacterGenerator
 
 @Composable
-fun NewCharacterScreen(character: SamodelkinCharacter,
+fun NewCharacterScreen(character: SamodelkinCharacter, apiButtonIsEnabled: Boolean,
                        onGenerateRandomCharacter: () -> Unit,
-                       onSaveCharacter: (SamodelkinCharacter) -> Unit) {
+                       onSaveCharacter: (SamodelkinCharacter) -> Unit,
+                       onRequestApiCharacter: () -> Unit) {
     when(LocalConfiguration.current.orientation) {
         Configuration.ORIENTATION_LANDSCAPE -> {
             Row(
@@ -44,8 +45,8 @@ fun NewCharacterScreen(character: SamodelkinCharacter,
                     Spacer(modifier = Modifier.height(16.dp))
                     NewCharacterButton(
                         text = stringResource(R.string.api_label),
-                        enabled = false,
-                        onClick = { }
+                        enabled = apiButtonIsEnabled,
+                        onClick = { onRequestApiCharacter() }
                     )
                     Spacer(modifier = Modifier.height(16.dp))
                     NewCharacterButton(
@@ -80,8 +81,8 @@ fun NewCharacterScreen(character: SamodelkinCharacter,
                     ) {
                         NewCharacterButton(
                             text = stringResource(R.string.api_label),
-                            enabled = false,
-                            onClick = { }
+                            enabled = apiButtonIsEnabled,
+                            onClick = { onRequestApiCharacter() }
                         )
                     }
                 }
@@ -101,9 +102,10 @@ private fun PreviewNewCharacterScreen() {
     val characterState = remember { mutableStateOf(CharacterGenerator.generateRandomCharacter()) }
     NewCharacterScreen(
         character = characterState.value,
+        true,
         onGenerateRandomCharacter = { characterState.value = CharacterGenerator.generateRandomCharacter() },
         onSaveCharacter = { }
-    )
+    ) {}
 }
 
 @Preview(showBackground = true, device = "spec:parent=pixel_5,orientation=landscape")
@@ -112,7 +114,8 @@ private fun PreviewNewCharacterScreenLandscape() {
     val characterState = remember { mutableStateOf(CharacterGenerator.generateRandomCharacter()) }
     NewCharacterScreen(
         character = characterState.value,
+        true,
         onGenerateRandomCharacter = { characterState.value = CharacterGenerator.generateRandomCharacter() },
         onSaveCharacter = { }
-    )
+    ) {}
 }

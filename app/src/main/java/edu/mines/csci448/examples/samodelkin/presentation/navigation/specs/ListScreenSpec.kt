@@ -1,10 +1,7 @@
 package edu.mines.csci448.examples.samodelkin.presentation.navigation.specs
 
 import android.content.Context
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.AddCircle
 import androidx.compose.material.icons.filled.ArrowBack
@@ -16,7 +13,9 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import androidx.navigation.NamedNavArgument
 import androidx.navigation.NavBackStackEntry
 import androidx.navigation.NavHostController
@@ -52,11 +51,18 @@ object ListScreenSpec : IScreenSpec {
                 verticalArrangement = Arrangement.Center,
                 horizontalAlignment = Alignment.CenterHorizontally) {
                 Card(modifier = Modifier
-                    .padding(8.dp)) {
-                    Text(text = "There are currently no characters in your codex")
-                    Button(onClick = { navController.navigate(route = NewCharacterScreenSpec.buildRoute(
+                    .padding(8.dp)
+                ) {
+                    Text(modifier = Modifier
+                        .padding(10.dp),
+                        textAlign = TextAlign.Center,
+                        text = "There are currently no characters in your codex",
+                    fontSize = 22.sp)
+                    Button(modifier = Modifier
+                        .padding(8.dp).fillMaxWidth().align(Alignment.CenterHorizontally),
+                        onClick = { navController.navigate(route = NewCharacterScreenSpec.buildRoute(
                         NewCharacterScreenSpec.route)) }) {
-                        Text(text = "Add New Character")
+                        Text(text = "Add New Character", fontSize = 20.sp)
                     }
                 }
             }
