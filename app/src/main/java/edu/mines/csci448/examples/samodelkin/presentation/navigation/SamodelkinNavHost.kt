@@ -10,12 +10,14 @@ import androidx.navigation.compose.navigation
 import edu.mines.csci448.examples.samodelkin.presentation.navigation.specs.IScreenSpec
 import edu.mines.csci448.examples.samodelkin.presentation.viewmodel.ISamodelkinViewModel
 import edu.mines.csci448.examples.samodelkin.presentation.viewmodel.SamodelkinViewModel
+import kotlinx.coroutines.CoroutineScope
 
 @Composable
 fun SamodelkinNavHost(modifier: Modifier = Modifier,
                       navController: NavHostController,
                       samodelkinViewModel: ISamodelkinViewModel,
-                      context: Context
+                      context: Context,
+                      coroutineScope: CoroutineScope
 ) {
     NavHost(
         modifier = modifier,
@@ -36,7 +38,8 @@ fun SamodelkinNavHost(modifier: Modifier = Modifier,
                             navController = navController,
                             navBackStackEntry = navBackStackEntry,
                             samodelkinViewModel = samodelkinViewModel,
-                            context = context
+                            context = context,
+                            coroutineScope = coroutineScope
                         )
                     }
                 }

@@ -8,6 +8,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
@@ -112,6 +113,7 @@ class MainActivity : ComponentActivity() {
 @Composable
 private fun MainActivityContent(samodelkinViewModel: ISamodelkinViewModel) {
     val navController = rememberNavController()
+    val coroutineScope = rememberCoroutineScope()
     val context = LocalContext.current
 
     SamodelkinTheme {
@@ -125,7 +127,7 @@ private fun MainActivityContent(samodelkinViewModel: ISamodelkinViewModel) {
                     context = context)
             }) { contentPadding ->
                 SamodelkinNavHost(navController = navController, samodelkinViewModel = samodelkinViewModel,
-                    context = context, modifier = Modifier.padding(contentPadding))
+                    context = context, modifier = Modifier.padding(contentPadding), coroutineScope = coroutineScope)
             }
         }
     }

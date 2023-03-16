@@ -24,16 +24,16 @@ class SamodelkinFetchr {
     val characterState: StateFlow<SamodelkinCharacter?>
         get() = mCharacterState.asStateFlow()
 
-    init {
-        val retrofit = Retrofit
-            .Builder()
-            .baseUrl("https://cs-courses.mines.edu/")
-            .addConverterFactory(GsonConverterFactory.create())
-            .build()
+    val retrofit = Retrofit
+        .Builder()
+        .baseUrl("https://cs-courses.mines.edu/")
+        .addConverterFactory(GsonConverterFactory.create())
+        .build()
 
-        val samodelkinApiService =
-            retrofit.create(SamodelkinApiService::class.java)
+    private val samodelkinApiService =
+        retrofit.create(SamodelkinApiService::class.java)
 
+    fun getCharacter() {
         val samodelkinRequest = samodelkinApiService.getCharacter()
 
         samodelkinRequest.enqueue(object : Callback<SamodelkinCharacter> {
@@ -52,8 +52,7 @@ class SamodelkinFetchr {
                 if (responseCharacter == null) {
                     Log.d(LOG_TAG, "responseCharacter is null")
                     mCharacterState.update { null }
-                }
-                else {
+                } else {
                     val newCharacter = responseCharacter.copy(
                         avatarAssetPath = "file:///android_asset/characters/${responseCharacter.avatarAssetPath}",
                         id = UUID.randomUUID()

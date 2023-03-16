@@ -19,6 +19,7 @@ import edu.mines.csci448.examples.samodelkin.R
 import edu.mines.csci448.examples.samodelkin.presentation.newcharacter.NewCharacterScreen
 import edu.mines.csci448.examples.samodelkin.presentation.viewmodel.ISamodelkinViewModel
 import edu.mines.csci448.examples.samodelkin.util.CharacterGenerator
+import kotlinx.coroutines.CoroutineScope
 
 object DetailScreenSpec : IScreenSpec {
     private const val LOG_TAG = "448.DetailScreenSpec"
@@ -55,7 +56,8 @@ object DetailScreenSpec : IScreenSpec {
         samodelkinViewModel: ISamodelkinViewModel,
         navController: NavHostController,
         navBackStackEntry: NavBackStackEntry,
-        context: Context
+        context: Context,
+        coroutineScope: CoroutineScope
     ) {
         val uuid = navBackStackEntry.arguments?.getString(ARG_UUID_NAME)?.let { UUID.fromString(it) }
         if (uuid != null) {

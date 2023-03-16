@@ -27,6 +27,7 @@ import java.util.*
 import edu.mines.csci448.examples.samodelkin.R
 import edu.mines.csci448.examples.samodelkin.presentation.newcharacter.NewCharacterScreen
 import edu.mines.csci448.examples.samodelkin.presentation.viewmodel.ISamodelkinViewModel
+import kotlinx.coroutines.CoroutineScope
 
 object ListScreenSpec : IScreenSpec {
 
@@ -40,7 +41,8 @@ object ListScreenSpec : IScreenSpec {
         samodelkinViewModel: ISamodelkinViewModel,
         navController: NavHostController,
         navBackStackEntry: NavBackStackEntry,
-        context: Context
+        context: Context,
+        coroutineScope: CoroutineScope
     ) {
         val characterListState =
             samodelkinViewModel.characterListState.collectAsState()
