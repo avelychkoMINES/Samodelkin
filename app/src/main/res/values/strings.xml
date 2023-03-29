@@ -40,4 +40,6 @@
     <string name="cancel_api_label">Cancel Request</string>
     <string name="save_to_codex_label">Save Character To Codex</string>
     <string name="snackbar_character_saved_msg">%1$s saved!</string>
+
+    <string name="send_character_msg_formatter">I just added %1$s, the %2$s %3$s, to my Samodelkin codex!</string>
 </resources>
